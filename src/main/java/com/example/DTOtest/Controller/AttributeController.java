@@ -3,7 +3,7 @@ package com.example.DTOtest.Controller;
 import com.example.DTOtest.DTO.DTO.Attributes.A2CatDTO;
 import com.example.DTOtest.DTO.DTO.Attributes.A2LiteDTO;
 import com.example.DTOtest.DTO.DTO.Attributes.Attribute1DTO;
-import com.example.DTOtest.Service.AttributeService;
+import com.example.DTOtest.Service.AttributeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +31,7 @@ import java.util.List;
 @RequestMapping(path="/attributes")
 public class AttributeController {
     @Autowired
-    private AttributeService attrService;
+    private AttributeServiceImpl attrService;
     //get all a1
     @GetMapping
     @RequestMapping(path="/a1/all")

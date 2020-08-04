@@ -9,9 +9,7 @@ import java.util.Set;
 
 @Getter
 @Setter
-public class Entity1DTO {
-    private Long id;
-    private String name;
+public class Entity1DTO extends E1LiteDTO {
     private Long attrib1Id;
     private String attrib1Name;
     private Set<A2SkelDTO> attribute2s;

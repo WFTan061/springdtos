@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class AttributeService {
+public class AttributeServiceImpl {
 
     @Autowired
     private A2CatRepository catRepo;
@@ -53,7 +53,12 @@ public class AttributeService {
         a1Repo.save(a1);
         return a1.getId() + " added";
     }
-
+    public String deleteA1(Attribute1DTO a1Dto){
+        return null;
+    }
+    public String editA1(Attribute1 a1Dto){
+        return null;
+    }
     //cats
     public  List<A2CatDTO> getAllCat(){
         List<A2CatDTO> allCats = new ArrayList<A2CatDTO>();
@@ -62,6 +67,15 @@ public class AttributeService {
         );
         return allCats;
     }
+    public List<A2CatDTO> getA2Cat(String name){
+        List<A2Cat> getCats = catRepo.findByName(name);
+        List<A2CatDTO> a2CatList = new ArrayList<>();
+        getCats.forEach(a2Cat->{
+            a2CatList.add(new A2CatDTO().setName(a2Cat.getName()));
+        });
+        return a2CatList;
+    }
+
     public String addCat(A2CatDTO catDTO){
         A2Cat newCat = aMap.createA2CatDTO(catDTO);
         catRepo.save(newCat);
@@ -78,22 +92,15 @@ public class AttributeService {
                     newA2Dto.setId(a2.getId());
                     newA2Dto.setName(a2.getName());
                     if(a2.getCategory()!=null) {
-                        newA2Dto.setA2CatDTOid(a2.getCategory().getId().toString());
-                        newA2Dto.setA2CatDTOname(a2.getCategory().getName());
+                        newA2Dto.setA2CatDTOId(a2.getCategory().getId().toString());
+                        newA2Dto.setA2CatDTOName(a2.getCategory().getName());
                     }
                     a2List.add(newA2Dto);
                 }
         );
         return a2List;
     }
-    public List<A2CatDTO> getA2Cat(String name){
-        List<A2Cat> getCats = catRepo.findByName(name);
-        List<A2CatDTO> a2CatList = new ArrayList<>();
-        getCats.forEach(a2Cat->{
-            a2CatList.add(new A2CatDTO().setName(a2Cat.getName()));
-        });
-        return a2CatList;
-    }
+
 
     public String addA2(A2LiteDTO a2DTO) {
         Attribute2 a2 = aMap.createA2DTO(a2DTO);
@@ -142,11 +149,11 @@ public class AttributeService {
 
     public A2LiteDTO getA2ById(Long id) {
         Attribute2 a2 = a2Repo.findById(id).get();
-        A2LiteDTO toReturn = new A2LiteDTO()
-                .setId(a2.getId())
-                .setName(a2.getName())
-                .setA2CatDTOid(a2.getCategory().getId().toString())
-                .setA2CatDTOname(a2.getCategory().getName());
+        A2LiteDTO toReturn = new A2LiteDTO();
+        toReturn.setId(a2.getId());
+        toReturn.setName(a2.getName());
+        toReturn.setA2CatDTOId(a2.getCategory().getId().toString());
+        toReturn.setA2CatDTOName(a2.getCategory().getName());
         return toReturn;
     }
 //    public String updateA2(A2LiteDTO a2Dto){

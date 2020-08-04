@@ -10,10 +10,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Accessors(chain=true)
-//v1 stuff
-public class A2LiteDTO {
-    private Long id;
-    private String name;
-    private String a2CatDTOid;//id of a2catdto
-    private String a2CatDTOname;
+public class A2LiteDTO extends A2SkelDTO{
+    private String a2CatDTOId;//id of a2catdto
+    private String a2CatDTOName;
 }
