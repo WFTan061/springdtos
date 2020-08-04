@@ -1,5 +1,6 @@
 package com.example.DTOtest.Controller;
 
+import com.example.DTOtest.DTO.DTO.Attributes.A2LiteDTO;
 import com.example.DTOtest.DTO.DTO.Attributes.Attribute1DTO;
 import com.example.DTOtest.DTO.DTO.Entity.Entity1DTO;
 import com.example.DTOtest.DTO.Mapper.EntityMapper;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 
 @RestController
@@ -52,9 +54,15 @@ public class EntityController {
 
     @PostMapping
     @RequestMapping(path="/add")
-    public ResponseEntity<String> addA1(@RequestBody Entity1DTO e1DTO){
-        et1Repo.save(eMap.toEntity1(e1DTO));
+    public ResponseEntity<String> addE1(@RequestBody(required=false) Entity1DTO e1DTO){
+        System.out.println(e1DTO.toString());
+        et1Repo.save(eMap.createEntity1(e1DTO));
         return new ResponseEntity<String>("e1Dto saved", HttpStatus.OK);
+    }
+    @PutMapping
+    @RequestMapping(path="/edit/{id}")
+    public ResponseEntity<Entity1> editA1(@RequestBody(required=false) Entity1DTO e1DTO){
+        return new ResponseEntity<Entity1>(new Entity1(),HttpStatus.OK);
     }
 
 }

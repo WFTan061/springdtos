@@ -34,7 +34,7 @@ public class AttributeController {
     private AttributeService attrService;
     //get all a1
     @GetMapping
-    @RequestMapping(path="/a1")
+    @RequestMapping(path="/a1/all")
     public @ResponseBody
     List<Attribute1DTO> getAllA1(){
         List<Attribute1DTO> a1List = attrService.getAllA1();
@@ -42,15 +42,15 @@ public class AttributeController {
     }
     //search a1 by name
     @GetMapping
-    @RequestMapping(path="/a1/{name}")
+    @RequestMapping(path="/a1/searchName/{name}")
     public @ResponseBody
-    List<Attribute1DTO> getAllA1(@PathVariable String name){
+    List<Attribute1DTO> getA1ByName(@PathVariable String name){
         List<Attribute1DTO> a1 = attrService.getA1(name);
         return a1;
     }
     //search a1 by id
     @GetMapping
-    @RequestMapping(path = "/a1/{id}")
+    @RequestMapping(path = "/a1/searchId/{id}")
     public @ResponseBody
     Attribute1DTO getA1ById(@PathVariable Long id){
         Attribute1DTO a1 = attrService.getA1ById(id);

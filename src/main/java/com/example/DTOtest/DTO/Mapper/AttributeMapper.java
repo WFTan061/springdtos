@@ -2,6 +2,7 @@ package com.example.DTOtest.DTO.Mapper;
 
 import com.example.DTOtest.DTO.DTO.Attributes.A2CatDTO;
 import com.example.DTOtest.DTO.DTO.Attributes.A2LiteDTO;
+import com.example.DTOtest.DTO.DTO.Attributes.A2SkelDTO;
 import com.example.DTOtest.DTO.DTO.Attributes.Attribute1DTO;
 import com.example.DTOtest.Model.Attributes.A2Cat;
 import com.example.DTOtest.Model.Attributes.Attribute1;
@@ -77,6 +78,11 @@ public class AttributeMapper {
     }
 
     public Attribute2 fromA2LiteDTO(A2LiteDTO a2Dto) {
+        Attribute2 toReturn = a2Repo.findById(a2Dto.getId()).get();
+        return toReturn;
+    }
+
+    public Attribute2 fromA2SkelDTO(A2SkelDTO a2Dto) {
         Attribute2 toReturn = a2Repo.findById(a2Dto.getId()).get();
         return toReturn;
     }

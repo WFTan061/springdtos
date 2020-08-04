@@ -22,6 +22,6 @@ public class Entity1 {
     @JoinColumn(name = "attribute1_id",referencedColumnName = "id")
     private Attribute1 attribute1;
 
-    @OneToMany(mappedBy="entity1")
+    @OneToMany(mappedBy="entity1",cascade=CascadeType.ALL)
     private Set<EntityAttrib2> attribute2s;
 }

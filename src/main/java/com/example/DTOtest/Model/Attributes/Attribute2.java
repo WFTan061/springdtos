@@ -20,7 +20,7 @@ public class Attribute2 {
 
     private String name;
 
-    @OneToMany(mappedBy = "attribute2")
+    @OneToMany(mappedBy = "attribute2",cascade=CascadeType.ALL)
     private Set<EntityAttrib2> entity1s;
 
     @ManyToOne()

@@ -9,11 +9,12 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
+import java.io.Serializable;
 
 @Getter
 @Setter
 @Entity
-public class EntityAttrib2 {
+public class EntityAttrib2 implements Serializable {
     @EmbeddedId
     EntityAttrib2Key entityAttrib2Key;
     @ManyToOne
