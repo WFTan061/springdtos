@@ -33,6 +33,7 @@ public class EntityMapper {
     public Entity1DTO toEntity1DTO(Entity1 ent1){
         Entity1DTO toReturn = new Entity1DTO();
         toReturn.setId(ent1.getId());
+        toReturn.setName(ent1.getName());
         if(ent1.getAttribute1() !=null) {
             toReturn.setAttrib1Id(ent1.getAttribute1().getId());
             toReturn.setAttrib1Name(ent1.getAttribute1().getName());
@@ -67,22 +68,8 @@ public class EntityMapper {
                     }
             );
         }
-        Set<EntityAttrib2> ea2Set = new HashSet<>();
-        if(et1Dto.getAttribute2s()!=null){
-            et1Dto.getAttribute2s().forEach(
-                    a2Dto->{
-                        System.out.println("###################FOUND: " + a2Dto.getId());
-                        Attribute2 a2 = a2Repo.findById(a2Dto.getId()).get();
-                        EntityAttrib2 ea2 = new EntityAttrib2();
-                        ea2.setEntity1(toReturn);
-                        ea2.setAttribute2(a2);
-                        ea2Set.add(ea2);
-                    }
-            );
-        }
-        toReturn.setAttribute2s(ea2Set);
-        System.out.println("Setting Attribute2Set!");
         toReturn.setName(et1Dto.getName());
+        System.out.println(toReturn.getName());
         return toReturn;
     }
     public Entity1 toEntity1(Entity1DTO ent1dto){

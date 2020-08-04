@@ -1,4 +1,4 @@
-package com.example.DTOtest.DTO.DTO;
+package com.example.DTOtest.DTO.DTO.Intermediary;
 
 import lombok.Getter;
 import lombok.Setter;

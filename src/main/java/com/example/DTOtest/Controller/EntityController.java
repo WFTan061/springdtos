@@ -1,11 +1,14 @@
 package com.example.DTOtest.Controller;
 
 import com.example.DTOtest.DTO.DTO.Attributes.A2LiteDTO;
+import com.example.DTOtest.DTO.DTO.Attributes.A2SkelDTO;
 import com.example.DTOtest.DTO.DTO.Attributes.Attribute1DTO;
 import com.example.DTOtest.DTO.DTO.Entity.Entity1DTO;
+import com.example.DTOtest.DTO.DTO.Intermediary.E1A2DTO;
 import com.example.DTOtest.DTO.Mapper.EntityMapper;
 import com.example.DTOtest.Model.Entity.Entity1;
 import com.example.DTOtest.Repository.Entity.Entity1Repository;
+import com.example.DTOtest.Service.EntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +32,8 @@ public class EntityController {
 
     @Autowired
     private EntityMapper eMap;
+    @Autowired
+    private EntityService eService;
 
     @GetMapping
     @RequestMapping(path="/all")
@@ -55,14 +60,23 @@ public class EntityController {
     @PostMapping
     @RequestMapping(path="/add")
     public ResponseEntity<String> addE1(@RequestBody(required=false) Entity1DTO e1DTO){
-        System.out.println(e1DTO.toString());
-        et1Repo.save(eMap.createEntity1(e1DTO));
+        eService.createE1(e1DTO);
         return new ResponseEntity<String>("e1Dto saved", HttpStatus.OK);
     }
-    @PutMapping
-    @RequestMapping(path="/edit/{id}")
-    public ResponseEntity<Entity1> editA1(@RequestBody(required=false) Entity1DTO e1DTO){
-        return new ResponseEntity<Entity1>(new Entity1(),HttpStatus.OK);
+    @DeleteMapping
+    @RequestMapping(path="/a2/remove")
+    public ResponseEntity<String> removeA2E1Link(@RequestBody E1A2DTO e1a2){
+        return new ResponseEntity<String>("",HttpStatus.OK);
     }
+    @DeleteMapping
+    @RequestMapping(path = "/delete/{id}")
+    public ResponseEntity<String> removeE1(@RequestParam Long id){
+        return new ResponseEntity<String>(eService.removeId(id),HttpStatus.OK);
+    }
+//    @PutMapping
+//    @RequestMapping(path="/edit/{id}")
+//    public ResponseEntity<Entity1> editE1(@RequestBody(required=false) Entity1DTO e1DTO){
+//        //receive whole dto then save the whole dto as of.
+//    }
 
 }
