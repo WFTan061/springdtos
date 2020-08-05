@@ -27,7 +27,7 @@ public class AttributeMapper {
     public A2LiteDTO toA2DTO(Attribute2 a2){
         A2LiteDTO a2Dto = new A2LiteDTO();
         a2Dto.setA2CatDTOid(a2.getCategory().getId().toString());
-        a2Dto.setA2CatDTOName(a2.getCategory().getName());
+        a2Dto.setA2CatDTOname(a2.getCategory().getName());
         a2Dto.setName(a2.getName());
         a2Dto.setId(a2.getId());
         return a2Dto;

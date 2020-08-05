@@ -1,11 +1,14 @@
 package com.example.DTOtest.Controller;
 
+import com.example.DTOtest.DTO.DTO.Attributes.A2LiteDTO;
+import com.example.DTOtest.DTO.DTO.Attributes.A2SkelDTO;
+import com.example.DTOtest.DTO.DTO.Attributes.Attribute1DTO;
 import com.example.DTOtest.DTO.DTO.Entity.Entity1DTO;
 import com.example.DTOtest.DTO.DTO.Intermediary.E1A2DTO;
 import com.example.DTOtest.DTO.Mapper.EntityMapper;
 import com.example.DTOtest.Model.Entity.Entity1;
 import com.example.DTOtest.Repository.Entity.Entity1Repository;
-import com.example.DTOtest.Service.EntityServiceImpl;
+import com.example.DTOtest.Service.EntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 
 @RestController
@@ -29,7 +33,7 @@ public class EntityController {
     @Autowired
     private EntityMapper eMap;
     @Autowired
-    private EntityServiceImpl eService;
+    private EntityService eService;
 
     @GetMapping
     @RequestMapping(path="/all")
@@ -60,7 +64,7 @@ public class EntityController {
         return new ResponseEntity<String>("e1Dto saved", HttpStatus.OK);
     }
     @DeleteMapping
-    @RequestMapping(path="/{a1id}/removea2/{e2id2}")
+    @RequestMapping(path="/a2/remove")
     public ResponseEntity<String> removeA2E1Link(@RequestBody E1A2DTO e1a2){
         return new ResponseEntity<String>("",HttpStatus.OK);
     }

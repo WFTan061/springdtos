@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 import java.util.Optional;
 
 @Component
-public class EntityServiceImpl {
+public class EntityService {
     @Autowired
     private Entity1Repository e1Repo;
 
